@@ -93,8 +93,8 @@
     </token>
     <token>
         <number>14</number>
-        <value>1.0</value>
-        <type>const_float</type>
+        <value>1.0E11</value>
+        <type>const_integer</type>
         <line>2</line>
         <valid>true</valid>
     </token>

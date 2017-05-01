@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.xml.transform.TransformerException;
 
@@ -80,33 +81,55 @@ public class MyScanner implements IMiniCCScanner{
 				//TODO detect suffix: u,U l,L ll,LL f,l,F,L ...
 				double number = 0;
 				//TODO: implement detection of 'e' and 'E'
-				//TODO: implement detection of '+' and '-'
 				if(Character.isDigit(s.charAt(beginIndex))
+						//there might be several blanks between the symbol and the digits
 						|| s.charAt(beginIndex) == '+' && Character.isDigit(getNextNonblankChar(s)) 
 						|| s.charAt(beginIndex) == '-' && Character.isDigit(getNextNonblankChar(s))){
 					boolean isInteger = true;
 					boolean isPositive = true;
-
+					Stack<Integer> stack = new Stack<Integer>();
+					
 					if(s.charAt(beginIndex) == '-'){
 						isPositive = false;
-						//System.out.println("neg detected");
 						endIndex += 2;
 					}
 					
 					if(s.charAt(beginIndex) == '+')
 						endIndex += 2;
 					while(Character.isDigit(s.charAt(endIndex))){
-						number += number*10+Character.getNumericValue(s.charAt(endIndex));
+						stack.push(Character.getNumericValue(s.charAt(endIndex)));
+						
 						endIndex ++;
 					}
+					int i = 0;
+					while(!stack.isEmpty()){
+						number += stack.pop() * Math.pow(10, i++);
+					}
 					
+					if(s.charAt(endIndex) == 'e' || s.charAt(endIndex) == 'E'){
+						double exp = 0;
+						
+						endIndex ++;
+						while(Character.isDigit(s.charAt(endIndex))){
+							stack.push(Character.getNumericValue(s.charAt(endIndex)));
+							endIndex ++;
+						}
+						
+						i = 0;
+						while(!stack.isEmpty()){
+							exp += stack.pop()* Math.pow(10, i++);
+						}
+						System.out.println("exp"+ exp);
+						number *= Math.pow(10, exp);
+						
+					}
 					//decimal part
-					int num = 1;
+					int num = 0;
 					if(s.charAt(endIndex) == '.'){
 						isInteger = false;
 						endIndex ++;
 						while(Character.isDigit(s.charAt(endIndex))){
-							number = number + Character.getNumericValue(s.charAt(endIndex))*Math.pow(10, -num);
+							number = number + Character.getNumericValue(s.charAt(endIndex))*Math.pow(10, --num);
 							endIndex ++;
 						}
 					}
@@ -126,7 +149,7 @@ public class MyScanner implements IMiniCCScanner{
 				}
 				
 				//detect constant string
-				
+				//TODO detect escape char
 				if(s.charAt(beginIndex) == '\"'){
 					endIndex ++;
 					while(s.charAt(endIndex) != '\"'){
@@ -212,7 +235,7 @@ public class MyScanner implements IMiniCCScanner{
 		//TODO add others
 	}
 	
-	/**(not in use)
+	/**
 	 * get next character that is not a blank
 	 * @param str input string
 	 * @return next non blank character
