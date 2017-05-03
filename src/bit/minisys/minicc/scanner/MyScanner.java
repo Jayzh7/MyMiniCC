@@ -76,7 +76,10 @@ public class MyScanner implements IMiniCCScanner{
 					continue;
 				}
 
-				//detect integer or real
+				/**
+				 * detection covers numbers with '+', '-', numbers with 'e',
+				 *                  floating number,  ...
+				 */
 				//TODO detect prefix 0x(hex), 0(oct)
 				//TODO detect suffix: u,U l,L ll,LL f,l,F,L ...
 				double number = 0;
@@ -156,6 +159,7 @@ public class MyScanner implements IMiniCCScanner{
 						sb.append(s.charAt(endIndex));
 						endIndex ++;
 					}
+					System.out.println(sb.toString());
 					tokenList.add(new Token(++tokenNum, sb.toString(), TokenType.CONST_STRING, lineNum, true));
 					endIndex ++;
 					beginIndex = endIndex;
@@ -193,8 +197,6 @@ public class MyScanner implements IMiniCCScanner{
 					continue;
 				}
 				
-				 
-					
 			}
 			reader.close();
 		}catch(Exception e){
