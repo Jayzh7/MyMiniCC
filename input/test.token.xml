@@ -114,7 +114,7 @@
     </token>
     <token>
         <number>17</number>
-        <value>str</value>
+        <value>b</value>
         <type>identifier</type>
         <line>3</line>
         <valid>true</valid>
@@ -128,8 +128,8 @@
     </token>
     <token>
         <number>19</number>
-        <value>123</value>
-        <type>const_string</type>
+        <value>-1.234</value>
+        <type>const_float</type>
         <line>3</line>
         <valid>true</valid>
     </token>
@@ -142,29 +142,29 @@
     </token>
     <token>
         <number>21</number>
-        <value>return</value>
+        <value>int</value>
         <type>keyword</type>
         <line>4</line>
         <valid>true</valid>
     </token>
     <token>
         <number>22</number>
-        <value>a</value>
+        <value>c</value>
         <type>identifier</type>
         <line>4</line>
         <valid>true</valid>
     </token>
     <token>
         <number>23</number>
-        <value>+</value>
+        <value>=</value>
         <type>operator</type>
         <line>4</line>
         <valid>true</valid>
     </token>
     <token>
         <number>24</number>
-        <value>b</value>
-        <type>identifier</type>
+        <value>-123.345</value>
+        <type>const_float</type>
         <line>4</line>
         <valid>true</valid>
     </token>
@@ -177,9 +177,114 @@
     </token>
     <token>
         <number>26</number>
-        <value>}</value>
+        <value>int</value>
+        <type>keyword</type>
+        <line>5</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>27</number>
+        <value>e</value>
+        <type>identifier</type>
+        <line>5</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>28</number>
+        <value>=</value>
         <type>operator</type>
         <line>5</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>29</number>
+        <value>1.0000000000000001E23</value>
+        <type>const_integer</type>
+        <line>5</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>30</number>
+        <value>;</value>
+        <type>separator</type>
+        <line>5</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>31</number>
+        <value>int</value>
+        <type>keyword</type>
+        <line>6</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>32</number>
+        <value>str</value>
+        <type>identifier</type>
+        <line>6</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>33</number>
+        <value>=</value>
+        <type>operator</type>
+        <line>6</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>34</number>
+        <value>123</value>
+        <type>const_string</type>
+        <line>6</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>35</number>
+        <value>;</value>
+        <type>separator</type>
+        <line>6</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>36</number>
+        <value>return</value>
+        <type>keyword</type>
+        <line>7</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>37</number>
+        <value>a</value>
+        <type>identifier</type>
+        <line>7</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>38</number>
+        <value>+</value>
+        <type>operator</type>
+        <line>7</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>39</number>
+        <value>b</value>
+        <type>identifier</type>
+        <line>7</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>40</number>
+        <value>;</value>
+        <type>separator</type>
+        <line>7</line>
+        <valid>true</valid>
+    </token>
+    <token>
+        <number>41</number>
+        <value>}</value>
+        <type>operator</type>
+        <line>8</line>
         <valid>true</valid>
     </token>
 </tokens>
