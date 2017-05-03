@@ -77,13 +77,14 @@ public class MyScanner implements IMiniCCScanner{
 				}
 
 				/**
-				 * detection covers numbers with '+', '-', numbers with 'e',
-				 *                  floating number,  ...
+				 * detection covers :
+				 * numbers with '+' or '-'
+				 * numbers with 'e'
+				 * floating number,  ...
 				 */
 				//TODO detect prefix 0x(hex), 0(oct)
 				//TODO detect suffix: u,U l,L ll,LL f,l,F,L ...
 				double number = 0;
-				//TODO: implement detection of 'e' and 'E'
 				if(Character.isDigit(s.charAt(beginIndex))
 						//there might be several blanks between the symbol and the digits
 						|| s.charAt(beginIndex) == '+' && Character.isDigit(getNextNonblankChar(s)) 

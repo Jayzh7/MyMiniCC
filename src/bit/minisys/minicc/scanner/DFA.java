@@ -1,5 +1,5 @@
 package bit.minisys.minicc.scanner;
-
+//abandoned
 public class DFA {
 	int state ;
 	
