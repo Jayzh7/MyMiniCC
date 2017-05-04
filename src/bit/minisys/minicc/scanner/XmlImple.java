@@ -28,7 +28,7 @@ public class XmlImple {
 	private TransformerFactory factory;
 	/**
 	 * add tokens to root as nodes
-	 * @param token tokens to be converted to nodes
+	 * @param token tokens to be converted to nodes to be appended
 	 */
 	public void addNode(Token token){
 		root.appendChild(tokenToNode(token));
@@ -48,6 +48,7 @@ public class XmlImple {
 		node.appendChild(number);
 		value = doc.createElement("value");
 		value.appendChild(doc.createTextNode(token.getValStr()));
+		System.out.println(" IMPLE:" + token.getValStr());
 		node.appendChild(value);
 		type = doc.createElement("type");
 		type.appendChild(doc.createTextNode(token.getTtStr()));

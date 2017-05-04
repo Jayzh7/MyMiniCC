@@ -46,4 +46,14 @@ public class Token {
 		else
 			return new String("false");
 	}
+	
+	public void modifyEscapeChar(){
+		if(this.value.equals(">")){
+			this.value = "&gt;"; 
+		}else if(this.value.equals("<")){
+			this.value = "&lt;";
+		}else if(this.value.equals("&")){
+			this.value = "&amp;";
+		}
+	}
 }

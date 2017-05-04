@@ -121,7 +121,7 @@ public class MyScanner implements IMiniCCScanner{
 						
 						i = 0;
 						while(!stack.isEmpty()){
-							exp += stack.pop()* Math.pow(10, i++);
+							exp += stack.pop()* Math.pow(10, i++);	
 						}
 						System.out.println("exp"+ exp);
 						number *= Math.pow(10, exp);
@@ -223,16 +223,16 @@ public class MyScanner implements IMiniCCScanner{
 			keywordList.add(keywords[i]);
 		}
 		
-		for(int i = 0; i < operators.length; i ++){
-			if(operators[i].length() == 1){
-				singleOperatorList.add(operators[i].charAt(0));
+		for(String op : operators){
+			if(op.length() == 1){
+				singleOperatorList.add(op.charAt(0));
 			}else{
-				complexOperatorList.add(operators[i]);
+				complexOperatorList.add(op);
 			}
 		}
 		
-		for(int i = 0; i < separators.length; i ++){
-			sepList.add(separators[i]);
+		for(char op: separators){
+			sepList.add(op);
 		}
 		
 		//TODO add others
@@ -260,13 +260,25 @@ public class MyScanner implements IMiniCCScanner{
 		xml = new XmlImple();
 		xml.createXml(fileName);
 		for(Token token:tokenList){
+			//process '>','<' ..
+			if(token.getTtStr().equals(TokenType.OPERATOR.toString().toLowerCase())){
+				processEscapeChar(token);
+			}
 			xml.addNode(token);
+			System.out.println("gXML " + token.getValStr());
 		}
 		xml.writeFile();
 		
 	}
+	
+	private void processEscapeChar(Token token){
+		String st = token.getValStr();
+		if(st.equals(">") || st.equals("<") ||  st.equals("&")){
+			token.modifyEscapeChar();
+		}
+	}
 	/**
-	 * all the type of tokens including keywords, constant value, identifier, separator, operator
+	 * all type of tokens including keywords, constant value, identifier, separator, operator
 	 * @author Jayzh7
 	 */
 	public enum TokenType{
@@ -296,6 +308,6 @@ public class MyScanner implements IMiniCCScanner{
 			"%"
 	};
 	public static char[] separators = {
-		',', ';','{', '}',
+		',', ';', '{', '}',
 	};
 }
